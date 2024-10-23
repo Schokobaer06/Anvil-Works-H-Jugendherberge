@@ -1,9 +1,33 @@
 allow_embedding: false
-name: Classic 1
-package_name: Classic_1
+db_schema:
+  files:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: path
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: file
+      type: media
+    - admin_ui: {order: 2, width: 200}
+      name: file_version
+      type: string
+    server: full
+    title: Files
+metadata: {description: Buche ein Zimmer bei der Jugendherberge, logo_img: 'asset:logo.png', title: jugendherberge}
+name: Jugendherberge
+package_name: Jugendherberge
 runtime_options:
   client_version: '3'
   server_spec: {base: python310-minimal}
   server_version: python3-sandbox
   version: 2
-services: []
+services:
+- client_config: {}
+  server_config: {auto_create_missing_columns: true}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {file_table: files}
+  source: /runtime/services/anvil/files.yml
+startup_form: Form1
+uplink_visible: true
