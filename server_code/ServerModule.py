@@ -4,6 +4,7 @@ from anvil.tables import app_tables
 import anvil.files
 from anvil.files import data_files
 import anvil.server
+import sqlite3
 
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
@@ -17,3 +18,10 @@ import anvil.server
 #   print("Hello, " + name + "!")
 #   return 42
 #
+@anvil.server.callable
+def get_everything(rows="*"):
+  conn = sqlite3.connect(data_files['jugendherberge.db'])
+  cursor = conn.cursor()
+  res = list(cursor.execute(f"SELECT {rows} FROM sqlite_master WHERE type='table';"))
+  print(res)
+  return res

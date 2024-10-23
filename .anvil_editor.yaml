@@ -5,7 +5,9 @@ unique_ids:
     single-column.html: SOTGH6HU7YXJ47URNLJ5B77QEIGIAFIZ
     theme.css: KASJDFXFQOZ5VSLEJK46FHNUXHGYSSO6
   forms:
-    Form1: '172967559024086568893167.38858'
+    Startseite: '172967559024086568893167.38858'
+    Startseite.Anmeldung: '1729678754521845742188958.112'
+    Startseite.Registrierung: '1729678977889895355653907.1029'
   modules: {}
   scripts: {}
   server_modules:
