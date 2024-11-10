@@ -1,14 +1,22 @@
 components:
 - components:
   - components:
-    - layout_properties: {grid_position: 'DEZTVN,DQUQBB'}
-      name: repeating_panel_1
-      properties: {item_template: StartSeite.ItemTemplate2}
-      type: RepeatingPanel
+    - layout_properties: {grid_position: 'ECZQSF,RCJOCE'}
+      name: label_aktuelle_buchung
+      properties: {align: center, text: '-'}
+      type: Label
     - event_bindings: {click: button_buchen_click}
       layout_properties: {grid_position: 'TUTKPD,RAHCLF'}
       name: button_buchen
       properties: {text: Buchen}
+      type: Button
+    - layout_properties: {grid_position: 'TUTKPD,KPPRCU'}
+      name: button_registrieren
+      properties: {text: Registrieren}
+      type: Button
+    - layout_properties: {grid_position: 'TUTKPD,XYWVRP'}
+      name: button_anmelden
+      properties: {text: Anmelden}
       type: Button
     layout_properties: {grid_position: 'YYKPLZ,VGALPN'}
     name: card_1

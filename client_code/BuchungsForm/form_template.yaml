@@ -14,11 +14,15 @@ components:
       properties: {}
       type: DropDown
     - event_bindings: {click: button_buchen_click}
-      layout_properties: {grid_position: 'OBSUXX,UXFIDU'}
+      layout_properties: {grid_position: 'OBSUXX,UXFIDU HGWGXO,DFAKSB'}
       name: button_buchen
       properties:
         text: |
           Buchen
+      type: Button
+    - layout_properties: {grid_position: 'OBSUXX,UXFIDU FWRNRN,CUABEZ'}
+      name: button_zurueck
+      properties: {text: Zurück}
       type: Button
     layout_properties: {grid_position: 'DNSXRQ,WVBNHF'}
     name: card_1

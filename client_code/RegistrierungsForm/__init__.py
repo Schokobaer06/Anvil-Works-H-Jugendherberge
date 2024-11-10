@@ -20,6 +20,12 @@ class RegistrierungsForm(RegistrierungsFormTemplate):
         adresse = self.text_box_adresse.text
         preiskategorie = self.dropdown_preiskategorie.selected_value
         
-        anvil.server.call('register_gast', benutzername, passwort, name, adresse, preiskategorie)
-        alert("Registrierung erfolgreich!")
+        try:
+            anvil.server.call('register_gast', benutzername, passwort, name, adresse, preiskategorie)
+            alert("Registrierung erfolgreich!")
+            # Automatisch anmelden und zur Startseite weiterleiten
+            anvil.server.call('login', benutzername, passwort)
+            open_form('StartSeite')
+        except Exception as e:
+            alert(f"Fehler bei der Registrierung: {str(e)}")
 

@@ -85,13 +85,16 @@ def get_verfuegbare_zimmer():
         } for row in zimmer
     ]
 
+#@anvil.server.callable
+#def get_logged_in_user_id():
+#    user = anvil.users.get_user()
+#    if user:
+#        return user['GID']  # Dies sollte der Primärschlüssel des Benutzers sein, abhängig von der Benennung der Tabelle 'Gast'
+#    else:
+#        return None
 @anvil.server.callable
 def get_logged_in_user_id():
-    user = anvil.users.get_user()
-    if user:
-        return user['GID']  # Dies sollte der Primärschlüssel des Benutzers sein, abhängig von der Benennung der Tabelle 'Gast'
-    else:
-        return None
+    return anvil.server.session.get('user_id', None)
 
 @anvil.server.callable
 def create_booking(gast_id, zimmer_id, datum):
@@ -106,6 +109,15 @@ def create_booking(gast_id, zimmer_id, datum):
     # Änderungen speichern
     conn.commit()
     return "Buchung erfolgreich erstellt."
+
+@anvil.server.callable
+def get_preiskategorien():
+    #conn = anvil.server.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT PID, Kategorie FROM Preiskategorie")
+    preiskategorien = cursor.fetchall()
+    conn.close()
+    return [(row[1], row[0]) for row in preiskategorien]
 # Beispiel-Daten hinzufügen, wenn die Funktion manuell aufgerufen wird
 add_sample_data()
 

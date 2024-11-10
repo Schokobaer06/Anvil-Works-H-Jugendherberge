@@ -4,7 +4,7 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
-from ..StartSeite import StartSeite
+#from ..StartSeite import StartSeite
 
 class LoginForm(LoginFormTemplate):
     def __init__(self, **properties):
@@ -16,7 +16,8 @@ class LoginForm(LoginFormTemplate):
         login_successful = anvil.server.call('login', benutzername, passwort)
         
         if login_successful:
-            open_form(StartSeite())
+            alert("Anmeldung erfolgreich!")
+            open_form('StartSeite')
         else:
             alert("Login fehlgeschlagen. Bitte prüfen Sie Ihre Anmeldedaten.")
 
