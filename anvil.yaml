@@ -29,6 +29,6 @@ services:
 - client_config: {}
   server_config: {file_table: files}
   source: /runtime/services/anvil/files.yml
-startup: {module: Startseite, type: form}
+startup: {module: StartSeite, type: form}
 startup_form: null
 uplink_visible: true

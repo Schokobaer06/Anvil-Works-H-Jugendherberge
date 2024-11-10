@@ -1,0 +1,38 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'GCVVWN,JICDXM'}
+      name: repeating_panel_zimmer
+      properties: {item_template: BuchungsForm.ItemTemplate3}
+      type: RepeatingPanel
+    - layout_properties: {grid_position: 'OBSUXX,JOJOGE'}
+      name: date_picker_datum
+      properties: {placeholder: ''}
+      type: DatePicker
+    - layout_properties: {grid_position: 'OBSUXX,EFGEHS'}
+      name: drop_down_zimmer
+      properties: {}
+      type: DropDown
+    - event_bindings: {click: button_buchen_click}
+      layout_properties: {grid_position: 'OBSUXX,UXFIDU'}
+      name: button_buchen
+      properties:
+        text: |
+          Buchen
+      type: Button
+    layout_properties: {grid_position: 'DNSXRQ,WVBNHF'}
+    name: card_1
+    properties: {role: card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: Buchung}
+  type: Label
+container:
+  properties: {html: '@theme:single-column.html'}
+  type: HtmlTemplate
+is_package: true

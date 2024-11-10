@@ -1,0 +1,43 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'TNHVGZ,JJQRUV'}
+      name: text_box_benutzername
+      properties: {placeholder: Benutzername}
+      type: TextBox
+    - layout_properties: {grid_position: 'GFAGID,ECYHSP'}
+      name: text_box_passwort
+      properties: {placeholder: Passwort}
+      type: TextBox
+    - layout_properties: {grid_position: 'QUQIPJ,LCXQGD'}
+      name: text_box_name
+      properties: {placeholder: Name}
+      type: TextBox
+    - layout_properties: {grid_position: 'HXQINI,RNIINM'}
+      name: text_box_adresse
+      properties: {placeholder: Adresse}
+      type: TextBox
+    - layout_properties: {grid_position: 'ZHRCAT,EOZHOW'}
+      name: dropdown_preiskategorie
+      properties: {include_placeholder: false}
+      type: DropDown
+    - layout_properties: {grid_position: 'XGKRVI,BOWHLQ'}
+      name: registrieren
+      properties: {text: Registrieren}
+      type: Button
+    layout_properties: {grid_position: 'LWYHAK,WCJBXC'}
+    name: card_1
+    properties: {role: card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: Registrieren}
+  type: Label
+container:
+  properties: {html: '@theme:single-column.html'}
+  type: HtmlTemplate
+is_package: true
