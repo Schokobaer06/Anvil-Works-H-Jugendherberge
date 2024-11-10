@@ -13,11 +13,9 @@ class Startseite(StartseiteTemplate):
     #print(anvil.server.call('get_everything',"name"))
     # Any code you write here will run before the form opens.
 
-  def button_registrieren_click(self, **event_args):
+  def button_buchen_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print("Registrieren")
+    pass
 
-  def button_anmelden_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    print("Anmelden")
+
 

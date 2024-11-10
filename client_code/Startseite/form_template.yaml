@@ -4,19 +4,14 @@ components:
   properties: {text: Jugendherberge}
   type: Label
 - components:
-  - event_bindings: {click: button_anmelden_click}
-    layout_properties: {full_width_row: false, grid_position: 'EAZWKM,PNRQVR'}
-    name: button_anmelden
-    properties: {align: right, bold: true, text: Anmelden, underline: false}
-    type: Button
-  - event_bindings: {click: button_registrieren_click}
-    layout_properties: {grid_position: 'EAZWKM,BRMRMP'}
-    name: button_registrieren
-    properties: {align: left, bold: true, text: Registrieren}
+  - event_bindings: {click: button_buchen_click}
+    layout_properties: {grid_position: 'RGNRJA,CZEDBD'}
+    name: button_buchen
+    properties: {text: Buchen}
     type: Button
   layout_properties: {slot: default}
-  name: card_button
-  properties: {col_widths: '{"PNRQVR":25,"BRMRMP":22}', role: card, visible: true}
+  name: card_1
+  properties: {role: card}
   type: ColumnPanel
 container:
   properties: {html: '@theme:single-column.html'}
