@@ -4,6 +4,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
+from .Buchung import Buchung as BuchungsForm
 
 
 class Startseite(StartseiteTemplate):
@@ -15,7 +16,7 @@ class Startseite(StartseiteTemplate):
 
   def button_buchen_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
+    open_form(BuchungsForm())
 
 
 
