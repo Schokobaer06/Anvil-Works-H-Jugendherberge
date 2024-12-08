@@ -19,27 +19,26 @@ class RegistrierungsForm(RegistrierungsFormTemplate):
         name = self.text_box_name.text
         adresse = self.text_box_adresse.text
         preiskategorie = self.dropdown_preiskategorie.selected_value
+        
 
         if self.text_box_benutzername.text == "" or self.text_box_passwort.text == "":
           alert("Benutzername/Passwort kann nicht leer sein")
           return
 
         try:
-          try:
-              print("TEST 1")
-              anvil.server.call('register_gast', benutzername, passwort, name, adresse, preiskategorie)
-              # Automatisch anmelden und zur Startseite weiterleiten
-              #anvil.server.call('login', benutzername, passwort)
-              #print("TEST 2")
-              
-              #print("TEST 3")
-          except Exception as e:
-              alert(f"Fehler bei der Registrierung: {str(e)}")
-            
+          benutzername_verfuegbar = anvil.server.call('check_benutzername', benutzername)
+          if not benutzername_verfuegbar:
+              alert("Dieser Benutzername ist bereits vergeben. Bitte wählen Sie einen anderen.")
+              return
+      
+          # Benutzer registrieren
+          anvil.server.call('register_gast', benutzername, passwort, name, adresse, preiskategorie)
           alert("Registrierung erfolgreich!")
           open_form('StartSeite')
+      
         except Exception as e:
           alert(f"Fehler bei der Registrierung: {str(e)}")
+
       
 
     def button_zurueck_click(self, **event_args):

@@ -5,18 +5,30 @@ components:
       name: label_aktuelle_buchung
       properties: {align: center, text: '-'}
       type: Label
+    - layout_properties: {grid_position: 'LCBXLP,KQRUFS'}
+      name: label_user
+      properties:
+        spacing:
+          margin: [null, null, null, 0]
+        text: NICHT ANGEMELDET
+      type: Label
     - event_bindings: {click: button_buchen_click}
       layout_properties: {grid_position: 'TUTKPD,RAHCLF'}
       name: button_buchen
       properties: {text: Buchen}
       type: Button
+    - layout_properties: {grid_position: 'TUTKPD,KVHDGR'}
+      name: button_anmelden
+      properties: {text: Anmelden}
+      type: Button
     - layout_properties: {grid_position: 'TUTKPD,KPPRCU'}
       name: button_registrieren
       properties: {text: Registrieren}
       type: Button
-    - layout_properties: {grid_position: 'TUTKPD,XYWVRP'}
-      name: button_anmelden
-      properties: {text: Anmelden}
+    - event_bindings: {click: button_abmelden_click}
+      layout_properties: {grid_position: 'TUTKPD,TXMPNI'}
+      name: button_abmelden
+      properties: {text: Abmelden}
       type: Button
     layout_properties: {grid_position: 'YYKPLZ,VGALPN'}
     name: card_1

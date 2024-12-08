@@ -15,8 +15,10 @@ class LoginForm(LoginFormTemplate):
         passwort = self.text_box_passwort.text
         login_successful = anvil.server.call('login', benutzername, passwort)
         
-        if login_successful:
+      
+        if login_successful is not None:
             alert("Anmeldung erfolgreich!")
+            #print("DEBUG: ANMELDUNG erfolgreich")
             open_form('StartSeite')
         else:
             alert("Login fehlgeschlagen. Bitte prüfen Sie Ihre Anmeldedaten.")

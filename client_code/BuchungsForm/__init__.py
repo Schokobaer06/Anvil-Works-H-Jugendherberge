@@ -9,8 +9,8 @@ from anvil.tables import app_tables
 class BuchungsForm(BuchungsFormTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
-
         # Verfügbare Zimmer abrufen und in der RepeatingPanel-Komponente anzeigen
+        anvil.server.call('debug_check_zimmer')
         zimmer_liste = anvil.server.call('get_verfuegbare_zimmer')
         #print("Debug - Verfügbare Zimmer: ", zimmer_liste)  # Debug-Ausgabe für verfügbare Zimmer
 
@@ -47,6 +47,7 @@ class BuchungsForm(BuchungsFormTemplate):
         try:
             anvil.server.call('create_booking', gast_id, zimmer_id, datum)
             alert("Buchung erfolgreich abgeschlossen!")
+            open_form('StartSeite')
         except Exception as e:
             alert(f"Fehler bei der Buchung: {str(e)}")
 

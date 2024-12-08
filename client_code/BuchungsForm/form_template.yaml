@@ -20,7 +20,8 @@ components:
         text: |
           Buchen
       type: Button
-    - layout_properties: {grid_position: 'OBSUXX,UXFIDU FWRNRN,CUABEZ'}
+    - event_bindings: {click: button_zurueck_click}
+      layout_properties: {grid_position: 'OBSUXX,UXFIDU FWRNRN,CUABEZ'}
       name: button_zurueck
       properties: {text: Zurück}
       type: Button
