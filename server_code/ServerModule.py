@@ -41,10 +41,11 @@ def add_sample_data():
 def register_gast(benutzername, passwort, name, adresse, preiskategorie):
     hashed_password = hash_password(passwort)
     cursor = conn.cursor()
+    kategorie = get_preiskategorieID(preiskategorie)
     cursor.execute("""
         INSERT INTO Gast (Benutzername, Passwort, Name, Adresse, PreiskategorieID) 
         VALUES (?, ?, ?, ?, ?)
-    """, (benutzername, hashed_password, name, adresse, preiskategorie))
+    """, (benutzername, hashed_password, name, adresse, kategorie))
     conn.commit()
     return "Gast erfolgreich registriert."
 
@@ -85,6 +86,18 @@ def get_verfuegbare_zimmer():
         } for row in zimmer
     ]
 
+@anvil.server.callable
+def get_verfuegbare_gaeste():
+  cursor = conn.cursor()
+  cursor.execute("SELECT Benutzername, Passwort, Name, RegistrierungDatum, PreiskategorieID from Gast")
+  result = cursor.fetchall()
+  return str([{f"""Username: {row[0]}
+  Passwort: {row[1]}
+  RegistrierungDatum: {row[2]}
+  PreiskategorieID: {row[3]}
+  """} for row in result])
+  
+  
 #@anvil.server.callable
 #def get_logged_in_user_id():
 #    user = anvil.users.get_user()
@@ -119,5 +132,27 @@ def get_preiskategorien():
     conn.close()
     return [(row[1], row[0]) for row in preiskategorien]
 # Beispiel-Daten hinzufügen, wenn die Funktion manuell aufgerufen wird
-add_sample_data()
+#add_sample_data()
+@anvil.server.callable
+def get_preiskategorieID(kategorie):
+  cursor = conn.cursor()
+  cursor.execute(f"SELECT PID FROM Preiskategorie WHERE Kategorie ={kategorie}")
+  result = cursor.fetchone()
+  return result
+  
+
+@anvil.server.callable
+def delete_all_entries():
+    cursor = conn.cursor()
+
+    # Tabellen mit Namen (ersetzen Sie die Tabellen mit Ihren Namen)
+    tabellen = ["Preiskategorie", "Zimmer", "Jugendherberge"]
+
+    for tabelle in tabellen:
+        cursor.execute(f"DELETE FROM {tabelle}")
+        print(f"Alle Einträge aus der Tabelle {tabelle} wurden gelöscht.")
+    
+    conn.commit()
+    conn.close()
+    return "Alle Tabellen wurden geleert."
 

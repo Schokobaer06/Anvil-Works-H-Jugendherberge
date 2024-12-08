@@ -21,9 +21,15 @@ components:
       name: dropdown_preiskategorie
       properties: {include_placeholder: false}
       type: DropDown
-    - layout_properties: {grid_position: 'XGKRVI,BOWHLQ'}
+    - event_bindings: {click: button_registrieren_click}
+      layout_properties: {grid_position: 'XGKRVI,BOWHLQ'}
       name: registrieren
       properties: {text: Registrieren}
+      type: Button
+    - event_bindings: {click: button_zurueck_click}
+      layout_properties: {grid_position: 'XGKRVI,IVQKGU'}
+      name: button_zurueck
+      properties: {text: Zurück}
       type: Button
     layout_properties: {grid_position: 'LWYHAK,WCJBXC'}
     name: card_1

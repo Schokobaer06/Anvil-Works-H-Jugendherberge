@@ -21,3 +21,7 @@ class LoginForm(LoginFormTemplate):
         else:
             alert("Login fehlgeschlagen. Bitte prüfen Sie Ihre Anmeldedaten.")
 
+    def button_zurueck_click(self, **event_args):
+      """This method is called when the button is clicked"""
+      open_form('StartSeite')
+

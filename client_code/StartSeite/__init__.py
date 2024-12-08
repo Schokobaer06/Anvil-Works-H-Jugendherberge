@@ -11,23 +11,27 @@ from ..RegistrierungsForm import RegistrierungsForm
 from ..LoginForm import LoginForm
 
 class StartSeite(StartSeiteTemplate):
+  
     def __init__(self, **properties):
-        self.init_components(**properties)
-
-        # Registrieren- und Anmelde-Button hinzufügen
-        self.button_registrieren.set_event_handler('click', self.button_registrieren_click)
-        self.button_anmelden.set_event_handler('click', self.button_anmelden_click)
-        self.button_buchen.set_event_handler('click', self.button_buchen_click)
+      
+      self.init_components(**properties)
+      print(anvil.server.call('get_verfuegbare_gaeste'))
+      anvil.server.call('delete_all_entries')
+      anvil.server.call('add_sample_data')
+      # Registrieren- und Anmelde-Button hinzufügen
+      self.button_registrieren.set_event_handler('click', self.button_registrieren_click)
+      self.button_anmelden.set_event_handler('click', self.button_anmelden_click)
+      self.button_buchen.set_event_handler('click', self.button_buchen_click)
 
         # Aktuelle Buchung aus der Session abrufen und anzeigen
-        try:
-            aktuelle_buchung = anvil.server.call('get_current_booking')
-            if aktuelle_buchung:
-                self.label_aktuelle_buchung.text = f"Aktuelles Zimmer: Zimmer-ID {aktuelle_buchung['zimmer_id']} am {aktuelle_buchung['datum']}"
-            else:
-                self.label_aktuelle_buchung.text = "Keine aktuelle Buchung vorhanden."
-        except anvil.server.NoServerFunctionError:
-            self.label_aktuelle_buchung.text = "Keine aktuelle Buchung vorhanden."
+      try:
+          aktuelle_buchung = anvil.server.call('get_current_booking')
+          if aktuelle_buchung:
+              self.label_aktuelle_buchung.text = f"Aktuelles Zimmer: Zimmer-ID {aktuelle_buchung['zimmer_id']} am {aktuelle_buchung['datum']}"
+          else:
+              self.label_aktuelle_buchung.text = "Keine aktuelle Buchung vorhanden."
+      except anvil.server.NoServerFunctionError:
+          self.label_aktuelle_buchung.text = "Keine aktuelle Buchung vorhanden."
 
     def button_registrieren_click(self, **event_args):
         # Weiterleitung zur RegistrierungsForm
